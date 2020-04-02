@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>TruckQ</title>
+  </head>
+  <body>
+
+<!-- {
+        "QUOTA_DATE": "2020-04-01T12:52:37",
+        "TruckQ_Booking_NO": "RQ888478",
+        "Truck_License_NO": "723882",
+        "Truck_License_Province": "ชลบุรี",
+        "Main_Gate_Check_In_Time": "2020-04-01 12:04:37",
+        "CONTAINER_NO": "MRKU0396560",
+        "CONTAINER_NO_Size": "42",
+        "TERMINAL_ID": "LCBA0",
+        "Status": "1",
+        "Remark": null
+    },
+     -->
+
+<h2>TruckQ : Main Gate Time -- {{terminal}} on {{report_date}}</h2>
+{% if terminal == 'A0' %}
+	<a href="../B1">change to B1</a>
+{% else %}
+	<a href="../A0">change to A0</a>
+{% endif %}
+
+{% if trucks %}
+	<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">Main gate time</th>
+	      <th scope="col">License_NO</th>
+	      <th scope="col">Province</th>
+	      <th scope="col">CONTAINER Number</th>
+	      <th scope="col">CONTAINER Size</th>
+	      <th scope="col">Truck Booking#</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		  {% for truck in trucks %}
+		  	<tr>
+		      <th scope="row">{{truck.Main_Gate_Check_In_Time}}</th>
+		      <td>{{truck.Truck_License_NO}}</td>
+		      <td>{{truck.Truck_License_Province}}</td>
+		      <td>{{truck.CONTAINER_NO}}</td>
+		      <td>{{truck.CONTAINER_NO_Size}}</td>
+		      <td>{{truck.TruckQ_Booking_NO}}</td>
+		    </tr>
+		  {% endfor %}
+		</tbody>
+	</table>
+{% else %}
+  <h1>Hello, World!</h1>
+{% endif %}
+</body>
+</html>

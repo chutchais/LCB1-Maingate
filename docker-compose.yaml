@@ -1,0 +1,11 @@
+# docker-compose.yml
+
+version: '3.3'
+services:
+  tq-server:
+    build:
+      context: ./src
+    command: python app.py
+    container_name: tq-server
+    ports:
+      - 5000:5000
